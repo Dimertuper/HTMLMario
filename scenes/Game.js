@@ -33,6 +33,7 @@ export default class Game extends Phaser.Scene {
         this.map.createLayer('Background Color', this.tileset, 0, 152);
         this.map.createLayer('Graphics Layer', this.tileset, 0, 152)
         
+        // Ground layer
         this.ground = this.map.createLayer('Platform Layer', this.tileset, 0, 152);
         this.ground.setCollisionByExclusion(-1, true);
 
@@ -50,6 +51,7 @@ export default class Game extends Phaser.Scene {
     }
     update(){
       this.player.update(this.inputs);
+
     }
 
   }

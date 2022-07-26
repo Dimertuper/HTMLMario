@@ -28,4 +28,15 @@ export default scene => {
         frames: [{ key: 'atlas', frame: 'mario-atlas_5' }],
         frameRate: 10
     });
+
+    scene.anims.create({
+        key: 'rotate',
+        frames: scene.anims.generateFrameNames('atlas', {
+            prefix: 'mario-atlas_',
+            start: 6,
+            end: 9,
+        }),
+        frameRate: 10,
+        repeat: -1
+    });
 }
