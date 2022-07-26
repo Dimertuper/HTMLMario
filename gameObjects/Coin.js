@@ -31,7 +31,8 @@ export default class Coin {
             duration: 100,
             onComplete: () => coin.destroy()
         })
-        this.scene.events.emit('addCoin')
+        this.scene.events.emit('addCoin');
+        this.scene.events.emit('addScore');
         coin.collider.destroy();
     }
 

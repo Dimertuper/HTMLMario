@@ -7,7 +7,7 @@
          "name":"Background Color",
          "opacity":1,
          "type":"tilelayer",
-         "visible":false,
+         "visible":true,
          "width":240,
          "x":0,
          "y":0
@@ -18,7 +18,7 @@
          "name":"Graphics Layer",
          "opacity":1,
          "type":"tilelayer",
-         "visible":false,
+         "visible":true,
          "width":240,
          "x":0,
          "y":0
@@ -128,7 +128,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -751,7 +751,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 

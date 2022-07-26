@@ -1,6 +1,7 @@
 //Gameobjects
 import Player from '../gameObjects/Player.js'
 import Coin from '../gameObjects/Coin.js'
+import Goomba from '../gameObjects/Goomba.js'
 
 //Animations
 import loadAnimations from '../gameObjects/animation/animations.js'
@@ -46,12 +47,14 @@ export default class Game extends Phaser.Scene {
 
         //init Coin object
         this.coins = new Coin(this);
+        //Init Goombas
+        this.goombas = new Goomba(this);
 
 
     }
     update(){
       this.player.update(this.inputs);
-
+      this.goombas.update();
     }
 
   }

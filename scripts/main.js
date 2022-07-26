@@ -1,6 +1,7 @@
 import Menu from '../scenes/Menu.js'
 import Game from '../scenes/Game.js'
 import Hud from '../scenes/Hud.js'
+import GameOver from '../scenes/GameOver.js'
 
 new Phaser.Game({
     type: Phaser.AUTO,
@@ -18,5 +19,5 @@ new Phaser.Game({
             }
             }
         },
-    scene: [Menu, Game, Hud]
+    scene: [Menu, Game, GameOver, Hud]
 });

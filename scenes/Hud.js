@@ -4,6 +4,7 @@ export default class Hud extends Phaser.Scene{
         this.score = 0;
         this.coins = 0;
         this.timing = 0;
+        this.lives = 3;
     }
 
     create(){
@@ -12,6 +13,11 @@ export default class Hud extends Phaser.Scene{
         let coinsText = this.add.text(window.innerWidth/3, 20, ' \nCOINS x 0')
         this.add.text(window.innerWidth/1.5, 20, 'WORLD \n1-1')
         let timeText = this.add.text(window.innerWidth-50, 20, 'TIME \n0')
+
+        let gameOverText = this.add.text(window.innerWidth/2, 180, 'GAME OVER') 
+        gameOverText.visible = false;
+        let livesText = this.add.text(window.innerWidth/2, 180, 'LIVES x '+ this.lives) 
+        livesText.visible = false;
 
         let Game = this.scene.get('game');
         Game.events.on('addScore', function (){
@@ -23,8 +29,9 @@ export default class Hud extends Phaser.Scene{
             coinsText.setText('\nCOINS x ' + this.coins);
         }, this)
         
+        let timer;
         Game.events.on('startTimer', function(){
-            let timer = this.time.addEvent({
+            timer = this.time.addEvent({
                 delay: 1000,
                 callback: function(){
                     this.timing ++;
@@ -35,8 +42,26 @@ export default class Hud extends Phaser.Scene{
                 loop: true
             });
         }, this)
-
-
+        
+        let GameOver = this.scene.get('GameOver');
+        GameOver.events.on('gameOver', function(){
+            //console.log(this)
+            this.lives = this.lives-1;
+            this.score = 0;
+            this.coins = 0;
+            
+            if(this.lives == 0){
+                gameOverText.visible = true
+            }else{
+                livesText.setText('LIVES x '+ this.lives)
+                livesText.visible = true;
+                timer.paused = true;
+            }
+            setTimeout(()=>{
+                timer.paused = false;
+                this.scene.start("game")
+            },3000)
+        })
 
     }
 
