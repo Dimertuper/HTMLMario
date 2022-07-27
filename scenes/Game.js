@@ -8,7 +8,7 @@ import loadAnimations from '../gameObjects/animation/animations.js'
 
 export default class Game extends Phaser.Scene {
     constructor() {
-      super('game')
+      super({key: 'game'})
     }
 
     preload() {
@@ -26,6 +26,8 @@ export default class Game extends Phaser.Scene {
     }
   
     create() {
+        console.log('HH')
+        //this.scene.restart();
         //Getting map and tileset
         this.map = this.make.tilemap({key: 'map'})
         this.tileset = this.map.addTilesetImage('tileset_gutter', 'tiles')

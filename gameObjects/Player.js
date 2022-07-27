@@ -16,23 +16,22 @@ class Player {
     update(input){
         if((input.up.isDown || input.space.isDown) && this.sprite.body.onFloor()){
             this.sprite.setVelocityY(-300)
-            this.sprite.play('jump', true);
         }
         if(input.left.isDown){
             this.sprite.setVelocityX(-150).setFlipX(true);
-            this.sprite.body.onFloor() && !this.sprite.isDed && this.sprite.play('run', true);
+            this.sprite.body.onFloor() && !this.sprite.isDead && this.sprite.play('run', true);
             this.scene.cameras.main.stopFollow(this.sprite);
         } else if(input.right.isDown){
             this.sprite.setVelocityX(150).setFlipX(false);
-            this.sprite.body.onFloor() && !this.sprite.isDed && this.sprite.play('run', true); 
+            this.sprite.body.onFloor() && !this.sprite.isDead && this.sprite.play('run', true); 
             this.reFollowPlayer();  
         }else{
             //player.setVelocityY(0);
             this.sprite.setVelocityX(0);
             //Play idle if on floor
-            this.sprite.body.onFloor() && !this.sprite.isDed && this.sprite.play('idle', true);
+            this.sprite.body.onFloor() && !this.sprite.isDead && this.sprite.play('idle', true);
+            !this.sprite.body.onFloor() && !this.sprite.isDead && this.sprite.play('jump', true)
         }
-
     }
 
     reFollowPlayer(){
@@ -45,17 +44,23 @@ class Player {
     }
 
     die(){
-        this.scene.input.keyboard.shutdown();
-        this.scene.physics.world.removeCollider(this.collider);
+        if(!this.sprite.isDead){
+            this.scene.input.keyboard.shutdown();
+            this.scene.physics.world.removeCollider(this.collider);
 
-        this.sprite.isDed = true;
-        this.sprite.setVelocity(0, -350);
-        this.sprite.play('die', true);
-        this.sprite.setCollideWorldBounds(false);
-
-        setTimeout(()=> {
-            this.scene.scene.start('GameOver')
-        }, 1500)
+            this.sprite.isDead = true;
+            this.sprite.setVelocity(0, -350);
+            this.sprite.play('die', true);
+            this.sprite.setCollideWorldBounds(false);
+            console.log('death')
+            this.scene.time.addEvent({
+                delay: 1500,
+                callback: () => {
+                    this.scene.scene.stop('game').start('GameOver')
+                },
+                callbackScope: this
+            })
+        }
     }
 }
 

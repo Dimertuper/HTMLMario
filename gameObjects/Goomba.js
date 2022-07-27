@@ -49,14 +49,16 @@ export default class Goomba{
             return;
         }else{
             this.scene.player.die();
+            return
         }
     }
 
     die(){
         this.goombas.children.entries.forEach((goomba)=>{
-            if(goomba.body.touching.up){
+            if(goomba.body.touching.up && !goomba.isDead){
                 goomba.isDead = true;
                 goomba.play('goombaDie', true);
+                
                 goomba.on('animationcomplete', function(){ 
 
                     goomba.destroy();

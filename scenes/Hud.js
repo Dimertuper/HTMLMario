@@ -4,7 +4,7 @@ export default class Hud extends Phaser.Scene{
         this.score = 0;
         this.coins = 0;
         this.timing = 0;
-        this.lives = 3;
+        this.lives = 2;
     }
 
     create(){
@@ -45,23 +45,41 @@ export default class Hud extends Phaser.Scene{
         
         let GameOver = this.scene.get('GameOver');
         GameOver.events.on('gameOver', function(){
-            //console.log(this)
+
             this.lives = this.lives-1;
             this.score = 0;
             this.coins = 0;
             
             if(this.lives == 0){
                 gameOverText.visible = true
+                livesText.visible = false;
+                this.score = 0;
+                this.coins = 0;
+
             }else{
                 livesText.setText('LIVES x '+ this.lives)
                 livesText.visible = true;
+                gameOverText.visible = false
                 timer.paused = true;
             }
-            setTimeout(()=>{
-                timer.paused = false;
-                this.scene.start("game")
-            },3000)
-        })
+            this.time.addEvent({
+                delay: 3000,
+                callback: () => {
+
+                    livesText.visible = false;
+                    gameOverText.visible = false;
+                    
+                    if(this.lives == 0){
+                        this.lives = 3;
+                        timer = null;
+                        this.timing = 0;
+                        this.events.emit('menu')
+                    }else{
+                        this.events.emit('gameOn')
+                    }
+                }
+            })
+        }, this)
 
     }
 
