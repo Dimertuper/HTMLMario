@@ -2,6 +2,7 @@
 import Player from '../gameObjects/Player.js'
 import Coin from '../gameObjects/Coin.js'
 import Goomba from '../gameObjects/Goomba.js'
+import Flag from '../gameObjects/Flag.js'
 
 //Animations
 import loadAnimations from '../gameObjects/animation/animations.js'
@@ -14,6 +15,9 @@ export default class Game extends Phaser.Scene {
     preload() {
       //Player graphics  
       this.load.atlas('atlas', './assets/sprites/atlases/mario-atlas.png', './assets/sprites/atlases/mario-atlas.json');
+
+      //Flag
+      this.load.image('flag', './assets/sprites/Flag.png')
 
       //Tileset
       this.load.image('tiles', './assets/tilesets/tileset_gutter.png');
@@ -51,6 +55,8 @@ export default class Game extends Phaser.Scene {
         this.coins = new Coin(this);
         //Init Goombas
         this.goombas = new Goomba(this);
+        //Init flag
+        this.flag = new Flag(this);
 
 
     }

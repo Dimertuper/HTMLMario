@@ -1,6 +1,7 @@
 export default class Menu extends Phaser.Scene {
-    constructor() {
+    constructor(data) {
       super('menu')
+      this.maxScore = 0;
     }
   
     preload() {
@@ -41,6 +42,17 @@ export default class Menu extends Phaser.Scene {
         Button.on('pointerout', ()=> {
             pointer.visible = false;
         })
+
+
+        let maxScoreTxt = this.add.text(window.innerWidth/2 - 120, 240, 'MAX SCORE:\n' + this.maxScore)
+        maxScoreTxt.visible = false;
+
+        //Max score
+        if(this.maxScore == 0){
+            maxScoreTxt.visible = false;
+        }else{
+            maxScoreTxt.visible = true;
+        }
 
     }
   }
