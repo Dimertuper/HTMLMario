@@ -30,7 +30,6 @@ export default class Game extends Phaser.Scene {
     }
   
     create() {
-        console.log('HH')
         //this.scene.restart();
         //Getting map and tileset
         this.map = this.make.tilemap({key: 'map'})

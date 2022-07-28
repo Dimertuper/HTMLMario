@@ -6,7 +6,6 @@ export default class Flag {
         const flagCoordinates = scene.tileset.texCoordinates[313]; 
 
         
-        
         this.flag = this.scene.physics.add.sprite(flagObject.objects[0].x, flagObject.objects[0].y + 155, 'flag').setOrigin(0).setDepth(1)
     
         this.flag.body.allowGravity = false;
@@ -20,6 +19,28 @@ export default class Flag {
     
 
     win(){
-        this.scene.scene.start('menu').stop('game')
+        this.scene.input.keyboard.shutdown();
+
+        this.scene.player.sprite.body.stop();
+        this.scene.player.sprite.setVelocity(0, 30);
+
+        this.scene.player.sprite.body.setAllowGravity(false);
+
+        this.scene.time.addEvent({
+            delay:1500,
+            callback: function(){
+                this.scene.player.sprite.body.setAllowGravity(true);
+                this.scene.player.sprite.setVelocity(100, 0);
+            },
+            callbackScope: this
+        })
+
+        this.scene.time.addEvent({
+            delay:3000,
+            callback: function(){
+                this.scene.scene.stop('game').start('menu')
+            },
+            callbackScope: this
+        })
     }
 }
