@@ -23,8 +23,12 @@ export default class Hud extends Phaser.Scene{
         this.livesText.visible = false;
 
         const Game = this.scene.get('game');
-        Game.events.once('addScore', this.addScore, this)
-        Game.events.once('addCoin', this.addCoin , this)
+        
+        
+        Game.events.off('addScore', this.addScore);
+        Game.events.off('addCoin', this.addCoin);
+        Game.events.on('addScore', this.addScore, this)
+        Game.events.on('addCoin', this.addCoin , this)
         
         this.timeToDie;
         Game.events.once('startTimer', this.timeOut, this)
@@ -112,14 +116,12 @@ export default class Hud extends Phaser.Scene{
     shutdown(){
         console.log('Jsem zde')
 
-        this.events.off('addScore', this.addScore);
-        this.events.off('addCoin', this.addCoin);
         this.events.off('startTimer', this.timeOut);
         this.events.off('gameOver', this.gameOver);
 
         this.time.removeEvent(this.timeToDie);
 
-        this.registry.destroy();
+        //this.registry.destroy();
         //this.events.destroy();
     }
 }

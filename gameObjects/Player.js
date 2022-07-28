@@ -30,8 +30,8 @@ class Player {
             this.sprite.setVelocityX(0);
             //Play idle if on floor
             this.sprite.body.onFloor() && !this.sprite.isDead && this.sprite.play('idle', true);
-            !this.sprite.body.onFloor() && !this.sprite.isDead && this.sprite.play('jump', true)
         }
+        !this.sprite.body.onFloor() && !this.sprite.isDead && this.sprite.play('jump', true)
     }
 
     reFollowPlayer(){
