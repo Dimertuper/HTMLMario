@@ -16,6 +16,7 @@ class Player {
     update(input){
         if((input.up.isDown || input.space.isDown) && this.sprite.body.onFloor()){
             this.sprite.setVelocityY(-300)
+            this.scene.jumpSound.play()
         }
         if(input.left.isDown){
             this.sprite.setVelocityX(-150).setFlipX(true);
@@ -52,7 +53,10 @@ class Player {
             this.sprite.setVelocity(0, -350);
             this.sprite.play('die', true);
             this.sprite.setCollideWorldBounds(false);
-            console.log('death')
+
+            this.scene.deathSound.play()
+            
+            //console.log('death')
             this.scene.time.addEvent({
                 delay: 1500,
                 callback: () => {

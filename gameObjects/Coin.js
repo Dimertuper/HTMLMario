@@ -33,6 +33,9 @@ export default class Coin {
         })
         this.scene.events.emit('addCoin');
         this.scene.events.emit('addScore');
+        
+        //Play sound
+        this.scene.coinSound.play();
         coin.collider.destroy();
     }
 

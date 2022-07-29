@@ -2,10 +2,11 @@ export default class Menu extends Phaser.Scene {
     constructor(data) {
       super('menu')
       this.maxScore = 0;
+      this.audioSwitch = "ON";
     }
   
     preload() {
-        this.load.audio('background_music', './assets/sounds/MainSong.mp3')
+  
 
         this.load.image('title', './assets/menu/title.png');
         this.load.image('pointer', './assets/menu/Supermushroom.png');
@@ -14,10 +15,7 @@ export default class Menu extends Phaser.Scene {
     }
 
     create() {
-        let bakgroundMusic = this.sound.add('background_music');
-        bakgroundMusic.play({
-            loop: true
-        });
+
 
         this.add.image(700, 230, 'background')
 
@@ -27,9 +25,21 @@ export default class Menu extends Phaser.Scene {
         const Button = this.add.text(window.innerWidth/2 - 60, 240, 'ONE PLAYER GAME', {fontSize: '20px'})
         Button.setInteractive();
 
-        
-        Button.on('pointerdown', () => { this.scene.start('game'); });
 
+
+        const soundBtn = this.add.text(20, 70, 'MUSIC ' + this.audioSwitch);
+        soundBtn.setInteractive();
+        soundBtn.on('pointerdown', () => {
+            if(this.audioSwitch == "ON"){
+                this.audioSwitch = 'OFF'
+                soundBtn.setText('MUSIC ' + this.audioSwitch)
+            }else{
+                this.audioSwitch = 'ON'
+                soundBtn.setText('MUSIC ' + this.audioSwitch)
+            }
+        });
+        
+        Button.on('pointerdown', () => { this.scene.start('game', {audioSwitch: this.audioSwitch}); });
 
         let pointer = this.add.image(window.innerWidth/2 - 80, 248, 'pointer');
         pointer.visible = false;

@@ -5,7 +5,6 @@ export default class Goomba{
         this.scene = scene
         this.goombas = this.scene.physics.add.group()
         this.collider = this.scene.physics.add.collider(this.scene.player.sprite, this.goombas, this.gameOver, null, this )
-
         //Get goomba layer
         const goombaObjects = this.scene.map.getObjectLayer('Goombas').objects;
 
@@ -46,6 +45,7 @@ export default class Goomba{
     gameOver(){
         if (this.scene.player.sprite.body.touching.down) {
             this.die();
+            this.scene.kickSound.play()
             return;
         }else{
             this.scene.player.die();

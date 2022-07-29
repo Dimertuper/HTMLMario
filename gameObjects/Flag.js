@@ -14,11 +14,12 @@ export default class Flag {
         //this.flag.body.offset.y = 100
         console.log(this.flag.body.offset.y)
         //this.flag = this.scene.physics.add.staticBody(flagCoordinates.x, flagCoordinates.y)
-        this.scene.physics.add.overlap(this.flag,this.scene.player.sprite, this.win, null, this )
+        this.scene.physics.add.overlap(this.flag,this.scene.player.sprite, this.win, null, this)
     }
     
 
     win(){
+        this.scene.backgroundMusic.stop()
         this.scene.input.keyboard.shutdown();
 
         this.scene.player.sprite.body.stop();
@@ -26,17 +27,19 @@ export default class Flag {
         this.scene.player.sprite.body.setAllowGravity(false);
         this.scene.player.sprite.setVelocity(0, 100);
 
+        this.scene.winSound.play()
+
         this.scene.time.addEvent({
             delay:1500,
             callback: function(){
-                //this.scene.player.sprite.body.setAllowGravity(true);
+                this.scene.player.sprite.body.setAllowGravity(true);
                 this.scene.player.sprite.setVelocity(100, 0);
             },
             callbackScope: this
         })
 
         this.scene.time.addEvent({
-            delay:3000,
+            delay:5500,
             callback: function(){
                 this.scene.scene.stop('game').start('menu')
             },

@@ -12,6 +12,11 @@ export default class Game extends Phaser.Scene {
       super({key: 'game'})
     }
 
+    init(data){
+      if(data){
+        this.audioSwitch = data.audioSwitch;
+      }
+    }
     preload() {
       //Player graphics  
       this.load.atlas('atlas', './assets/sprites/atlases/mario-atlas.png', './assets/sprites/atlases/mario-atlas.json');
@@ -27,10 +32,33 @@ export default class Game extends Phaser.Scene {
       this.load.on('complete', () => {
         loadAnimations(this);
       });
+
+      //Sounds
+      this.load.audio('coin', './assets/sounds/Coin.wav')
+      this.load.audio('die', './assets/sounds/Die.wav')
+      this.load.audio('gameOver', './assets/sounds/GameOver.wav')
+      this.load.audio('jump', './assets/sounds/Jump.wav')
+      this.load.audio('kick', './assets/sounds/Kick.wav')
+      this.load.audio('win', './assets/sounds/Win.wav')
+      this.load.audio('background_music', './assets/sounds/MainSong.mp3')
     }
   
     create() {
-        //this.scene.restart();
+        //Sounds
+        this.coinSound = this.sound.add('coin');
+        this.deathSound = this.sound.add('die');
+        this.gameOverSound = this.sound.add('gameOver');
+        this.jumpSound = this.sound.add('jump');
+        this.kickSound = this.sound.add('kick');
+        this.winSound = this.sound.add('win');
+        this.backgroundMusic = this.sound.add('background_music');
+        
+        if(this.audioSwitch == 'ON'){
+          this.backgroundMusic.play({
+            loop: true
+          });
+        }
+
         //Getting map and tileset
         this.map = this.make.tilemap({key: 'map'})
         this.tileset = this.map.addTilesetImage('tileset_gutter', 'tiles')
