@@ -11,7 +11,7 @@ export default class Hud extends Phaser.Scene{
         this.sys.events.once('shutdown', this.shutdown, this);
         //HUD
         this.scoreText = this.add.text(20, 20, 'MARIO \n0')
-        console.log('MAR')
+
         this.coinsText = this.add.text(window.innerWidth/3, 20, ' \nCOINS x 0')
         this.add.text(window.innerWidth/1.5, 20, 'WORLD \n1-1')
         this.timeText = this.add.text(window.innerWidth-50, 20, 'TIME \n0')
@@ -35,6 +35,7 @@ export default class Hud extends Phaser.Scene{
         
         this.timeToDie;
         Game.events.once('startTimer', this.timeOut, this)
+        Game.events.once('empty', this.empty, this);
         
         let GameOver = this.scene.get('GameOver');
         GameOver.events.once('gameOver', this.gameOver, this)
@@ -116,8 +117,15 @@ export default class Hud extends Phaser.Scene{
         })
     }
     
-    gameWin(){
-
+    empty(){
+        this.score = 0;
+        this.coins = 0;
+        this.timing = 400;
+        this.lives = 3;
+        this.timeToDie.paused = true;
+        this.coinsText.setText(' \nCOINS x 0')
+        this.scoreText.setText('MARIO \n0')
+        this.timeText.setText('TIME \n0')
     }
 
     shutdown(){

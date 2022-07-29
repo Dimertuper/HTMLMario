@@ -33,6 +33,12 @@ class Player {
             this.sprite.body.onFloor() && !this.sprite.isDead && this.sprite.play('idle', true);
         }
         !this.sprite.body.onFloor() && !this.sprite.isDead && this.sprite.play('jump', true)
+
+        //Hit floor
+        if(this.sprite.body.y == 340.8){
+            this.die();
+        }
+
     }
 
     reFollowPlayer(){
@@ -51,6 +57,8 @@ class Player {
 
             this.sprite.isDead = true;
             this.sprite.setVelocity(0, -350);
+
+            this.scene.backgroundMusic.stop()
             this.sprite.play('die', true);
             this.sprite.setCollideWorldBounds(false);
 

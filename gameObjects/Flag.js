@@ -41,6 +41,7 @@ export default class Flag {
         this.scene.time.addEvent({
             delay:5500,
             callback: function(){
+                this.scene.events.emit('empty')
                 this.scene.scene.stop('game').start('menu')
             },
             callbackScope: this
