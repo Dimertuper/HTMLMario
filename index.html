@@ -6,12 +6,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Super Mario</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        html{
+            height: 100%;
+            min-height: 100%;
+            box-sizing: border-box;
+            overflow-x: hidden;
+            overflow-y: hidden;
+        }
         body{
             width: 100%;
             height: 100%;
             margin: 0;
             padding: 0;
-            background-color: rgb(120, 80, 80);
+            background-color: #645f89;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.8em;
+        }
+        #controls{
+            width: 100%;
+            height: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .arrowKey{
+            padding: 20px;
+            background-color: white;
+            border: 5px solid black;
+            text-align: center;
+            font-weight: 800;
+        }
+        .controlsBckg{
+            padding: 10px 50px 10px 50px;
+            background-color: white;
+            border: 5px solid black;
+        }
+
+        .spaceKey{
+            text-align: center;
+            background-color: white;
+            border: 5px solid black;
+            padding: 20px 35px 20px 35px;
+            
+            margin: 20px;
+        }
+
+        .links{
+            position: absolute;
+            display: flex;
+            top: 90%;
+            left: 78%;
+            justify-content: space-between;
+            align-items: center;
+
+        }
+
+        .links img{
+            width: 60px;
         }
     </style>
 </head>
@@ -19,10 +73,30 @@
     
 	<script type='text/javascript' src="./scripts/phaser.js"></script>
 	<script type="module" type='text/javascript' src='./scripts/main.js'></script>
+
     <div id='game'></div>
     <div id="controls">
-        <p>Controls: arrows</p>
-        <p>Made by Filip Chodura</p>
+        <div class="controlsBckg">
+            <p>CONTROLS:</p>
+            <table>
+                <tr>
+                    <td> </td>
+                    <td id='up' class="arrowKey">↑</td>
+                </tr>
+                <tr>
+                    <td id='left' class="arrowKey">&lt</td>
+                    <td id='down' class="arrowKey">↓</td>
+                    <td id='right' class="arrowKey">&gt</td>
+                </tr>    
+                
+            </table>
+            <div id='space' class="spaceKey">SPACE</div>
+        </div>
+        <div class="links">
+            <p>Made by Filip Chodura</p>
+            <a href="https://github.com/Dimertuper/HTMLMario"><img src="./miscellaneous/gitHubLogo.png" alt="GitLogo"></a>
+        </div>
     </div>
+    <script type="module" type='text/javascript' src='./scripts/controls.js'></script>
 </body>
 </html>

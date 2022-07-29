@@ -22,14 +22,14 @@ export default class Flag {
         this.scene.input.keyboard.shutdown();
 
         this.scene.player.sprite.body.stop();
-        this.scene.player.sprite.setVelocity(0, 30);
 
         this.scene.player.sprite.body.setAllowGravity(false);
+        this.scene.player.sprite.setVelocity(0, 100);
 
         this.scene.time.addEvent({
             delay:1500,
             callback: function(){
-                this.scene.player.sprite.body.setAllowGravity(true);
+                //this.scene.player.sprite.body.setAllowGravity(true);
                 this.scene.player.sprite.setVelocity(100, 0);
             },
             callbackScope: this

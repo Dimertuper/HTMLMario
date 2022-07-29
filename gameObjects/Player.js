@@ -6,8 +6,6 @@ class Player {
         this.sprite.setCollideWorldBounds(true);
         this.sprite.isDead = false;
 
-        this.sprite.x += 3000;
-
         scene.cameras.main
         .setBounds(0, 0, scene.map.widthInPixels, scene.map.heightInPixels)
         .startFollow(this.sprite);

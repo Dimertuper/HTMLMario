@@ -16,7 +16,6 @@ export default class Menu extends Phaser.Scene {
     create() {
         let bakgroundMusic = this.sound.add('background_music');
         bakgroundMusic.play({
-            volume: 0,
             loop: true
         });
 
