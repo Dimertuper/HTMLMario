@@ -6,7 +6,7 @@ export default class Flag {
         const flagCoordinates = scene.tileset.texCoordinates[313]; 
 
         
-        this.flag = this.scene.physics.add.sprite(flagObject.objects[0].x, flagObject.objects[0].y + 155, 'flag').setOrigin(0).setDepth(1)
+        this.flag = this.scene.physics.add.sprite(flagObject.objects[0].x, flagObject.objects[0].y + 152, 'flag').setOrigin(0).setDepth(1)
     
         this.flag.body.allowGravity = false;
         this.flag.body.immovable = true;

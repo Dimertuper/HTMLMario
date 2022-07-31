@@ -6,7 +6,7 @@ export default class Coin {
             allowGravity: false            
         })
 
-        const coinObj = this.scene.map.getObjectLayer('Coins',).objects;
+        const coinObj = this.scene.map.getObjectLayer('Coins').objects;
         coinObj.forEach(coin => {
             this.coins.create(coin.x, coin.y+152 , 'atlas')
                 .setOrigin(0)

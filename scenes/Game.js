@@ -3,6 +3,7 @@ import Player from '../gameObjects/Player.js'
 import Coin from '../gameObjects/Coin.js'
 import Goomba from '../gameObjects/Goomba.js'
 import Flag from '../gameObjects/Flag.js'
+import QuestionBlock from '../gameObjects/BumpBlock.js'
 
 //Animations
 import loadAnimations from '../gameObjects/animation/animations.js'
@@ -23,6 +24,10 @@ export default class Game extends Phaser.Scene {
 
       //Flag
       this.load.image('flag', './assets/sprites/Flag.png')
+      
+      //Queston block
+      this.load.image('questionBlock', './assets/sprites/questionBlock.png')
+      this.load.image('unquestionBlock', './assets/sprites/unquestionBlock.png')
 
       //Tileset
       this.load.image('tiles', './assets/tilesets/tileset_gutter.png');
@@ -84,6 +89,8 @@ export default class Game extends Phaser.Scene {
         this.goombas = new Goomba(this);
         //Init flag
         this.flag = new Flag(this);
+        //Init question blocks
+        this.questionBlock = new QuestionBlock(this);
 
 
     }
