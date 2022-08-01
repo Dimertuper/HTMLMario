@@ -11,7 +11,7 @@ export default class Mushroom extends Phaser.Physics.Arcade.Sprite {
         this.scene.physics.add.collider(this.scene.player.sprite, this.mush, this.collectMush, null, this )
         this.scene.physics.add.collider(this.mush, this.scene.ground);
 
-
+        this.scene.powerUpPopsSound.play()
         //this.scene.events.on('update', this.update, this)
     }
 

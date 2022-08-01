@@ -2,7 +2,7 @@ class Player {
     constructor(scene, x, y){
         this.scene = scene
         
-        this.sprite = scene.physics.add.sprite(x, y, 'atlas').setScale(1.2)
+        this.sprite = scene.physics.add.sprite(x, y, 'atlas').setScale(1.1)
         this.sprite.setCollideWorldBounds(true);
         this.sprite.isDead = false;
 
@@ -38,9 +38,10 @@ class Player {
         !this.sprite.body.onFloor() && !this.sprite.isDead && this.sprite.play('jump', true)
 
         //Hit floor
-        if(this.sprite.body.y == 340.8){
+        if(this.sprite.body.y == 340.8 || (this.sprite.body.y == 337.6 && this.sprite.isBig) ){
             this.die();
         }
+        //console.log(this.sprite.body.y)
 
     }
 
@@ -59,7 +60,7 @@ class Player {
     }
 
     getSmaller(){
-        this.sprite.setScale(1.2)
+        this.sprite.setScale(1)
     }
 
     die(){

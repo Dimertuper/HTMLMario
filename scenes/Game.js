@@ -52,6 +52,7 @@ export default class Game extends Phaser.Scene {
       this.load.audio('background_music', './assets/sounds/MainSong.mp3')
       this.load.audio('powerUp', './assets/sounds/PowerUp.mp3')
       this.load.audio('damage', './assets/sounds/Damage.wav')
+      this.load.audio('powerupAppears', './assets/sounds/PowerupAppears.wav')
     }
   
     create() {
@@ -65,6 +66,7 @@ export default class Game extends Phaser.Scene {
         this.backgroundMusic = this.sound.add('background_music');
         this.powerUp = this.sound.add('powerUp')
         this.damageSound = this.sound.add('damage') 
+        this.powerUpPopsSound = this.sound.add('powerupAppears')
         
         if(this.audioSwitch == 'ON'){
           this.backgroundMusic.play({
