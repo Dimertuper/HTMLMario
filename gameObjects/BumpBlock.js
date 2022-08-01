@@ -1,6 +1,9 @@
+import Mushroom from './Mushroom.js'
+
 export default class QuestionBlock {
-    constructor(scene){
+    constructor(scene, mushroomBlocks){
         this.scene = scene;
+        this.mushroomBlocks = mushroomBlocks;
         this.questionBlocks = this.scene.physics.add.group({
             immovable: true,
             allowGravity: false
@@ -15,9 +18,11 @@ export default class QuestionBlock {
                 .body.offset.y = 2;
                 //Fix for uncollectible blocks, not prettiest solution but works
         });
-
+        let idVar = 0;
         this.questionBlocks.children.entries.forEach((question)=>{
             question.isCollected = false;
+            question.id = idVar;
+            idVar++;
         })
     }
 
@@ -31,11 +36,23 @@ export default class QuestionBlock {
     collect(){
         this.questionBlocks.children.entries.forEach((question)=>{
             if(question.body.touching.down && !question.isCollected){
-                question.isCollected = true;
+                //spawn mushroom if has right id
+                this.mushroomBlocks.forEach((block) =>{
+                    if(block == question.id){
+                        console.log('spawn mush')
+                        new Mushroom(this.scene, question.x, question.y - 18)
+                        question.isCollected = true;
+                    }
+                })
+                if(!question.isCollected){
+                    this.scene.events.emit('addScore')
+                    this.scene.coinSound.play();
+                    question.isCollected = true;
+                }
+                //console.log(question)
                 
                 question.setTexture('unquestionBlock')
-                this.scene.events.emit('addScore')
-                this.scene.coinSound.play();
+
 
             }
         })

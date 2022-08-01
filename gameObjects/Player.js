@@ -6,6 +6,9 @@ class Player {
         this.sprite.setCollideWorldBounds(true);
         this.sprite.isDead = false;
 
+        //Has collected mushroom
+        this.sprite.isBig = false;
+
         scene.cameras.main
         .setBounds(0, 0, scene.map.widthInPixels, scene.map.heightInPixels)
         .startFollow(this.sprite);
@@ -50,29 +53,48 @@ class Player {
         }       
     }
 
+    getBigger(){
+        this.sprite.setScale(1.4)
+        this.sprite.isBig = true;
+    }
+
+    getSmaller(){
+        this.sprite.setScale(1.2)
+    }
+
     die(){
-        if(!this.sprite.isDead){
-            this.scene.input.keyboard.shutdown();
-            this.scene.physics.world.removeCollider(this.collider);
-
-            this.sprite.isDead = true;
-            this.sprite.setVelocity(0, -350);
-
-            this.scene.backgroundMusic.stop()
-            this.sprite.play('die', true);
-            this.sprite.setCollideWorldBounds(false);
-
-            this.scene.deathSound.play()
-            
-            //console.log('death')
-            this.scene.time.addEvent({
-                delay: 1500,
-                callback: () => {
-                    this.scene.scene.stop('game').start('GameOver')
-                },
-                callbackScope: this
-            })
+        console.log(this.sprite.isBig)
+        if(!this.sprite.isBig){
+            if(!this.sprite.isDead){
+                this.scene.input.keyboard.shutdown();
+                this.scene.physics.world.removeCollider(this.collider);
+    
+                this.sprite.isDead = true;
+                this.sprite.setVelocity(0, -350);
+    
+                this.scene.backgroundMusic.stop()
+                this.sprite.play('die', true);
+                this.sprite.setCollideWorldBounds(false);
+    
+                this.scene.deathSound.play()
+                
+                //console.log('death')
+                this.scene.time.addEvent({
+                    delay: 1500,
+                    callback: () => {
+                        this.scene.scene.stop('game').start('GameOver')
+                    },
+                    callbackScope: this
+                })
+            }
+        }else{
+            setTimeout(()=>{
+                this.sprite.isBig = false;
+            }, 1000)
+            this.sprite.setVelocityY(-350)
+            this.scene.damageSound.play()
         }
+        this.getSmaller()
     }
 }
 

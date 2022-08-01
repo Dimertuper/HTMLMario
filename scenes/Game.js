@@ -5,6 +5,7 @@ import Goomba from '../gameObjects/Goomba.js'
 import Flag from '../gameObjects/Flag.js'
 import QuestionBlock from '../gameObjects/BumpBlock.js'
 
+
 //Animations
 import loadAnimations from '../gameObjects/animation/animations.js'
 
@@ -33,6 +34,9 @@ export default class Game extends Phaser.Scene {
       this.load.image('tiles', './assets/tilesets/tileset_gutter.png');
       this.load.tilemapTiledJSON('map', './assets/tilemaps/mario.json');
 
+      //Load mushroom 
+      this.load.image('mushroom', './assets/sprites/mushroom.png')
+
       //Loading aniations
       this.load.on('complete', () => {
         loadAnimations(this);
@@ -46,6 +50,8 @@ export default class Game extends Phaser.Scene {
       this.load.audio('kick', './assets/sounds/Kick.wav')
       this.load.audio('win', './assets/sounds/Win.wav')
       this.load.audio('background_music', './assets/sounds/MainSong.mp3')
+      this.load.audio('powerUp', './assets/sounds/PowerUp.mp3')
+      this.load.audio('damage', './assets/sounds/Damage.wav')
     }
   
     create() {
@@ -57,6 +63,8 @@ export default class Game extends Phaser.Scene {
         this.kickSound = this.sound.add('kick');
         this.winSound = this.sound.add('win');
         this.backgroundMusic = this.sound.add('background_music');
+        this.powerUp = this.sound.add('powerUp')
+        this.damageSound = this.sound.add('damage') 
         
         if(this.audioSwitch == 'ON'){
           this.backgroundMusic.play({
@@ -90,7 +98,7 @@ export default class Game extends Phaser.Scene {
         //Init flag
         this.flag = new Flag(this);
         //Init question blocks
-        this.questionBlock = new QuestionBlock(this);
+        this.questionBlock = new QuestionBlock(this, [0,6,9]);
 
 
     }

@@ -42,6 +42,14 @@
                  "height":16,
                  "id":185,
                  "name":"",
+                 "properties":
+                    {
+                     "whatToDrop":"coin"
+                    },
+                 "propertytypes":
+                    {
+                     "whatToDrop":"string"
+                    },
                  "rotation":0,
                  "type":"0",
                  "visible":true,
@@ -53,6 +61,14 @@
                  "height":16,
                  "id":187,
                  "name":"",
+                 "properties":
+                    {
+                     "whatToDrop":"coin"
+                    },
+                 "propertytypes":
+                    {
+                     "whatToDrop":"string"
+                    },
                  "rotation":0,
                  "type":"0",
                  "visible":true,
@@ -64,6 +80,14 @@
                  "height":16,
                  "id":188,
                  "name":"",
+                 "properties":
+                    {
+                     "whatToDrop":"coin"
+                    },
+                 "propertytypes":
+                    {
+                     "whatToDrop":"string"
+                    },
                  "rotation":0,
                  "type":"0",
                  "visible":true,
@@ -75,6 +99,14 @@
                  "height":16,
                  "id":189,
                  "name":"",
+                 "properties":
+                    {
+                     "whatTodrop":"mushroom"
+                    },
+                 "propertytypes":
+                    {
+                     "whatTodrop":"string"
+                    },
                  "rotation":0,
                  "type":"0",
                  "visible":true,
@@ -86,6 +118,14 @@
                  "height":16,
                  "id":190,
                  "name":"",
+                 "properties":
+                    {
+                     "whatToDrop":"coin"
+                    },
+                 "propertytypes":
+                    {
+                     "whatToDrop":"string"
+                    },
                  "rotation":0,
                  "type":"0",
                  "visible":true,
@@ -97,6 +137,14 @@
                  "height":16,
                  "id":191,
                  "name":"",
+                 "properties":
+                    {
+                     "whatToDrop":"coin"
+                    },
+                 "propertytypes":
+                    {
+                     "whatToDrop":"string"
+                    },
                  "rotation":0,
                  "type":"0",
                  "visible":true,
@@ -108,6 +156,14 @@
                  "height":16,
                  "id":192,
                  "name":"",
+                 "properties":
+                    {
+                     "whatToDrop":"coin"
+                    },
+                 "propertytypes":
+                    {
+                     "whatToDrop":"string"
+                    },
                  "rotation":0,
                  "type":"0",
                  "visible":true,
@@ -119,6 +175,14 @@
                  "height":16,
                  "id":193,
                  "name":"",
+                 "properties":
+                    {
+                     "whatToDrop":"coin"
+                    },
+                 "propertytypes":
+                    {
+                     "whatToDrop":"string"
+                    },
                  "rotation":0,
                  "type":"0",
                  "visible":true,
@@ -130,6 +194,14 @@
                  "height":16,
                  "id":194,
                  "name":"",
+                 "properties":
+                    {
+                     "whatToDrop":"coin"
+                    },
+                 "propertytypes":
+                    {
+                     "whatToDrop":"string"
+                    },
                  "rotation":0,
                  "type":"0",
                  "visible":true,
@@ -141,6 +213,14 @@
                  "height":16,
                  "id":195,
                  "name":"",
+                 "properties":
+                    {
+                     "whatToDrop":"coin"
+                    },
+                 "propertytypes":
+                    {
+                     "whatToDrop":"string"
+                    },
                  "rotation":0,
                  "type":"0",
                  "visible":true,
@@ -152,6 +232,14 @@
                  "height":16,
                  "id":196,
                  "name":"",
+                 "properties":
+                    {
+                     "whatToDrop":"coin"
+                    },
+                 "propertytypes":
+                    {
+                     "whatToDrop":"string"
+                    },
                  "rotation":0,
                  "type":"0",
                  "visible":true,
@@ -163,6 +251,14 @@
                  "height":16,
                  "id":197,
                  "name":"",
+                 "properties":
+                    {
+                     "whatToDrop":"coin"
+                    },
+                 "propertytypes":
+                    {
+                     "whatToDrop":"string"
+                    },
                  "rotation":0,
                  "type":"0",
                  "visible":true,
@@ -174,6 +270,14 @@
                  "height":16,
                  "id":198,
                  "name":"",
+                 "properties":
+                    {
+                     "whatToDrop":"coin"
+                    },
+                 "propertytypes":
+                    {
+                     "whatToDrop":"string"
+                    },
                  "rotation":0,
                  "type":"0",
                  "visible":true,
