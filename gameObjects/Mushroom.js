@@ -18,6 +18,7 @@ export default class Mushroom extends Phaser.Physics.Arcade.Sprite {
     collectMush(){
         this.scene.player.getBigger()
         this.scene.powerUp.play()
+        this.scene.events.emit('addScore')
         this.mush.destroy()
     }
 

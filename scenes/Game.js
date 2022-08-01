@@ -100,7 +100,7 @@ export default class Game extends Phaser.Scene {
         //Init flag
         this.flag = new Flag(this);
         //Init question blocks
-        this.questionBlock = new QuestionBlock(this, [0,6,9]);
+        this.questionBlock = new QuestionBlock(this, [0,6,10]);
 
 
     }

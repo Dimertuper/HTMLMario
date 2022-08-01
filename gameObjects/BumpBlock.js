@@ -39,7 +39,7 @@ export default class QuestionBlock {
                 //spawn mushroom if has right id
                 this.mushroomBlocks.forEach((block) =>{
                     if(block == question.id){
-                        console.log('spawn mush')
+                        //console.log('spawn mush')
                         new Mushroom(this.scene, question.x, question.y - 18)
                         question.isCollected = true;
                     }
