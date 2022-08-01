@@ -15,7 +15,7 @@ export default class QuestionBlock {
             this.questionBlocks.create(question.x, question.y + 152, 'questionBlock')
                 .setOrigin(0)
                 .setDepth(2)
-                .body.offset.y = 2;
+                .body.offset.y = 2; 
                 //Fix for uncollectible blocks, not prettiest solution but works
         });
         let idVar = 0;
